@@ -1,73 +1,49 @@
-package com.mzg.bicholist.dto;
+package com.devsuperior.dslist.dto;
 
-import com.mzg.bicholist.entities.Game;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.devsuperior.dslist.entities.Game;
+import com.devsuperior.dslist.projections.GameMinProjection;
 
-
-@AllArgsConstructor
-@NoArgsConstructor
 public class GameMinDTO {
 
+	private Long id;
+	private String title;
+	private Integer year;
+	private String imgUrl;
+	private String shortDescription;
+	
+	public GameMinDTO(Game entity) {
+		id = entity.getId();
+		title = entity.getTitle();
+		year = entity.getYear();
+		imgUrl = entity.getImgUrl();
+		shortDescription = entity.getShortDescription();
+	}
 
-    private Long id;
-    private String title;
-    private String year;
-    private String imgUrl;
-    private String shortDescription;
+	public GameMinDTO(GameMinProjection projection) {
+		id = projection.getId();
+		title = projection.getTitle();
+		year = projection.getGameYear();
+		imgUrl = projection.getImgUrl();
+		shortDescription = projection.getShortDescription();
+	}
 
-    public GameMinDTO(Game entity){
-        id = entity.getId();
-        title = entity.getTitle();
-        year = entity.getYear();
-        imgUrl = entity.getImgUrl();
-        shortDescription = entity.getShortDescription();
+	public Long getId() {
+		return id;
+	}
 
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public Integer getYear() {
+		return year;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public String getImgUrl() {
+		return imgUrl;
+	}
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
-
-    public String getImgUrl() {
-        return imgUrl;
-    }
-
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
-    }
-
-    public String getShortDescription() {
-        return shortDescription;
-    }
-
-    public void setShortDescription(String shortDescription) {
-        this.shortDescription = shortDescription;
-    }
+	public String getShortDescription() {
+		return shortDescription;
+	}
 }
